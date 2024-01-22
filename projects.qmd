@@ -1,0 +1,13 @@
+---
+title: "Projects"
+description: "Here you can see what I have been working on recently."
+listing:
+  contents: posts
+  type: default
+  sort:
+    - "date desc"
+  categories: true
+  filter-ui: [title, date]
+---
+
+------------------------------------------------------------------------

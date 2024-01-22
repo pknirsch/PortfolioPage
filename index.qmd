@@ -1,0 +1,27 @@
+---
+title: "Hello, I'm Philip!"
+description: "Student in Erasmus+ Masters Programme in Geo-information Science and Earth Observation for Environmental Modelling and Management"
+draft: false
+---
+
+<head>
+
+<!-- Preload background image -->
+
+<link rel="preload" href="/images/home-background.jpg" as="image"/> <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+```{=html}
+  <style>
+body {
+      background-image: url('/images/home-background.jpg');
+      background-size: cover;
+    }
+  </style>
+```
+</head>
+
+I'm Philip, a current Master student at Tartu Ülikool in Estonia. I hold a Bachelors degree in Geography and have been a student of African Studies. On this website you can find projects and maps that I have completed during my studies. Please take a look around!
+
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+
+## <a href="https://www.pexels.com/photo/aerial-shot-of-mountain-1731427/" target="_blank" class="small-link">Photo by Xue Guangjian</a>

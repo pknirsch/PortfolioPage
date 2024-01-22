@@ -1,0 +1,34 @@
+---
+title: "Philip M. Knirsch"
+image: "images/ThisOne.jpg"
+about:
+  template: broadside
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: ""
+    - icon: github
+      text: GitHub
+      href: ""
+---
+
+------------------------------------------------------------------------
+
+<strong>Philip Knirsch</strong> is currently pursuing his Master in <strong>**Geo-information Science and Earth Observation for Environmental Modelling and Management**</strong>. He is a big history and language enthusiast and likes to spend his free time exploring different cuisines and new places, preferably with the option to surf.
+
+#### 🎓 Education
+
+-   **Currently: M.Sc. in Geo-information Science and Earth Observation for Environmental Modelling and Management, Erasmus+** \| Tartu Ülikool, Estonia
+
+-   **B.Sc. in Geography** \| Rheinische Friedrich-Wilhelms-Universität Bonn, Germany
+
+-   **Regional Studies Asia/Africa (not completed)** \| Humboldt-Universität zu Berlin, Germany
+
+#### 💼 Professional Experience
+
+-   **GIS Intern at International Peace Information Service (IPIS)** \|Antwerp, Belgium\
+    *September 2022 - February 2023*\
+    \
+    **Student Assistant at Mercator Institute for China Studies (MERICS)** \| Berlin, Germany\
+    *July 2020 - September 2020*\
+    \

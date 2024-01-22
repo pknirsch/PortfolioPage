@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Philip M. Knirsch",
+    "section": "",
+    "text": "Philip Knirsch is currently pursuing his Master in Geo-information Science and Earth Observation for Environmental Modelling and Management. He is a big history and language enthusiast and likes to spend his free time exploring different cuisines and new places, preferably with the option to surf.\n\n🎓 Education\n\nCurrently: M.Sc. in Geo-information Science and Earth Observation for Environmental Modelling and Management, Erasmus+ | Tartu Ülikool, Estonia\nB.Sc. in Geography | Rheinische Friedrich-Wilhelms-Universität Bonn, Germany\nRegional Studies Asia/Africa (not completed) | Humboldt-Universität zu Berlin, Germany\n\n\n\n💼 Professional Experience\n\nGIS Intern at International Peace Information Service (IPIS) |Antwerp, Belgium\nSeptember 2022 - February 2023\n\nStudent Assistant at Mercator Institute for China Studies (MERICS) | Berlin, Germany\nJuly 2020 - September 2020"
+  },
+  {
+    "objectID": "contact.html#email-icons-png-designed-by-iyikon-photo-by-tyler-lastovich",
+    "href": "contact.html#email-icons-png-designed-by-iyikon-photo-by-tyler-lastovich",
+    "title": "Contact Me",
+    "section": "email icons PNG Designed By IYIKONPhoto by Tyler Lastovich",
+    "text": "email icons PNG Designed By IYIKONPhoto by Tyler Lastovich"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Hello, I’m Philip!",
+    "section": "",
+    "text": "I’m Philip, a current Master student at Tartu Ülikool in Estonia. I hold a Bachelors degree in Geography and have been a student of African Studies. On this website you can find projects and maps that I have completed during my studies. Please take a look around!"
+  },
+  {
+    "objectID": "index.html#photo-by-xue-guangjian",
+    "href": "index.html#photo-by-xue-guangjian",
+    "title": "Hello, I’m Philip!",
+    "section": "Photo by Xue Guangjian",
+    "text": "Photo by Xue Guangjian"
+  },
+  {
+    "objectID": "posts/1_PredictingSnowCoverDuration.html",
+    "href": "posts/1_PredictingSnowCoverDuration.html",
+    "title": "Predicting snow cover duration in Estonia",
+    "section": "",
+    "text": "In this project I developed a model to predicted snow cover duration in Estonia. The analysis utilized historical temperature data, data on snow cover duration from 22 stations and a digital elevation model.\nThe basis of this analysis were:\n\nRaster datasets comprising historical (1970 to 2000) monthly temperature information for December, January, and February for Estonia.\nVector data comprising snow cover duration data for 22 stations in Estonia\nA digital elevation model of Estonia in raster format\nVector data on the borders of Estonia\n\nI started with calculating average monthly winter temperatures from the historical temperature data sets. Then, using zonal statistics I extracted the average winter temperatures as well as the elevation values at the locations of the snow stations and combined the information into a single data frame and prepared it for regression analysis.\nThen I conducted a correlation analysis to examine the relationship between snow cover duration and the variables: temperature, elevation, longitude and latitude and visualized these correlations using scatter plots with linear regression lines.\nI thereafter developed a linear regression model to predict snow cover duration based on these predictors and evaluated the model’s coefficients to understand the nature of the individual relationships and their statistical significance. I then predicted snow cover duration using the regression coefficients of all variables and visualized the prediction results. They can be seen on Figure 1: \n\n\n\nFig 1: Prediction of Snow Cover Duration in Estonia\n\n\nI then prepared the data for spatial interpolation using Kriging. I therefore created a spatial grid over Estonia using 4000 grid cells. I then computed a sample variogram of the snow duration variable and then plotted the variogram, helping to understand the spatial structure of the snow duration data.\nI then defined key parameters (nugget, sill, range) based on the sample variogram and generated a variogram model with Gaussian function. I then fit the model to the sample variogram and plotted the model.\nBased on the spatial correlation structure defined by the variogram, I then performed Kriging interpolation on the duration variable. Thereby I predicted values at unsampled locations.\nI then converted the interpolation results into a raster object and visualized the Kriging predictions of estimated snow cover duration across Estonia. These are displayed in Figure 2. \n\n\n\nFig 2: Kriging results of days with snow cover in winter in Estonia"
+  },
+  {
+    "objectID": "posts/2_BreakIns_InteractiveWebmap.html",
+    "href": "posts/2_BreakIns_InteractiveWebmap.html",
+    "title": "Creating an Interactive Webmap of Data on Break-Ins and Population Density for Berlin",
+    "section": "",
+    "text": "In this project I worked with the criminal statistics data set of Berlin in 2022 as well as with data on population density. The end result is a static map of break-in patterns and an interactive web map giving an overview of break-ins in Berlin and it’s relation with population density.\nThe employed data sets are:\n\nBerliner Polizeiliche Kriminalstatistik 2022 (Berlin Crime Statistic 2022)\nBerliner Bezirksregionen 2022 (District Regions of 2022)\nUmweltatlas - Einwohnerdichte 2022 (Population Density 2022)\n\nThe challenge in this analysis lied in referencing the crime data set and the data on population density to a same reference area. The published crime statistic of 2022 was published on the level of district regions of Berlin. Data on population density however was not available for the same reference units. Only data that was on a higher aggregation level or on a lower aggregation level could therefore be utilized. I chose to work with a data set at the block or sub-block level, which also contained total population numbers per unit, and to aggregate it to the district regions.\nI started by calculating the area of each housing or sub-block unit. Since some housing blocks extended over two or more district regions I needed to perform a spatial intersection between the population density polygons and the district region polygons. The result was a new data frame that, in case of intersection with more than one district region, split the housing blocks into different parts. By calculating the area of the split housing blocks and dividing it by the area of the initial housing blocks I could derive at the proportion of area that was contained in each district. Since the data on population density also contained total population numbers per block unit I could multiply the population by the areal proportion of the housing block in each district region. I then aggregated the population numbers for each district region, divided that by the total area and thereby derived at the population density of each district region.\nNow I could perform a join between the population density data and the crime data set. I normalised the total break-ins per district regions by the total population and calculated the break-in incidence per 10 000 inhabitants. For further visualization purposes I also calculated the centroids of each district region and assigned the geometry feature to the break-in data.\nThen I conducted a correlation analysis to examine the relationship between population density and the incidence of break-ins. I constructed a linear regression model and evaluated the model’s coefficients to understand the nature of the relationships and it’s statistical significance.\nFurther steps included curating the data sets for visualization as a static map in R using the tmap package. I then exported the data and imported it into a python environment where I created an interactive leaflet web map.\n\n\n\nFig. 1: Map on Break-ins in Berlin in 2022 and it’s relation with population density (created with tmap)\n\n\nLink to Interactive Webmap"
+  },
+  {
+    "objectID": "posts/3_CropErodibility.html",
+    "href": "posts/3_CropErodibility.html",
+    "title": "Analysing Crop Erodibility in Berlin-Brandenburg",
+    "section": "",
+    "text": "For this project I analyzed environmental data on elevation, soil and land cover to identify area where croplands are susceptible to soil erosion in Berlin-Brandenburg. The project was conducted in QGIS.\nThe analysis included calculating slope from a a digital elevation model (DEM). From this slopes layer, slopes higher than 2 degrees were extracted to a new data layer. A soil data set from the Harmonized World Soil Database was subset to only include the most erodible soil texture classes (silt, silt loam, loam, sandy loam, loamy sand and silty clay loam).\nThereby I obtained two data layers with binary values, with 1 representing the presence of the informational category. I then employed suitability analysis and created three Raster Calculator expressions. The first selected specific agricultural land cover types from the ESA Land Cover 300m product and determined if the grid cells overlapped with steep slopes (&gt;2 degrees). The ones that did not overlap were attributed as cropland non-susceptible to erosion.\nIn another expression, the agricultural land cover types that overlap with erodible soil were identified and labelled as croplands on erodible soil. With the last raster expression the cells in which cropland is on steep slopes as well as on erodible soil were identified. This resulted in obtaining three informational categories on erosion susceptibility. The results are shown in Figure 1.\n\n\n\nFig. 1: Erodability of Cropland in Berlin-Brandenburg"
+  },
+  {
+    "objectID": "posts/4_FlowMapEstonia.html",
+    "href": "posts/4_FlowMapEstonia.html",
+    "title": "Flows between territorial communities in Estonia",
+    "section": "",
+    "text": "For this project a data set with the origin and destination of movements between territorial communities in January 2018 in Estonia was mapped.\nThe data set was loaded into QGIS in the Estonian Coordinate System (EPSG: 3301). An additional plugin called “Shape Tools” was installed. This tool allows for the creation of lines based on starting and ending point coordinates. The corresponding fields from the data set were selected and a new data layer with line polygons processed. After assigning the integer field type to the number of regular movers variable, the symbology of the lines was changed and size-graduated based on the number. Lines with a very small number of movers (&lt;5) were subsequently filtered out, significantly reducing the data layer.\nA dark map layout was chosen for visualization purposes and the lines styled accordingly. In the layer rendering specification the blending mode was changed to “Screen”, which is very suitable for dark themed maps. The line symbology was adapted through the geometry generator and an expression used to create a curving of the lines.\nA place name layer was added to the project and the larger cities labelled. A map (Figure 1) was then created that allow us to see pattern in movements between territorial communities\n\n\n\nFig. 1: Flowmap of movement between territorial communities of Estonia in January 2018"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Predicting snow cover duration in Estonia\n\n\n\n\n\n\n\nanalysis\n\n\ncode\n\n\ndata wrangling\n\n\nR\n\n\ndata visualization\n\n\nterra\n\n\nsf\n\n\ntmap\n\n\ntidyverse\n\n\ngstat\n\n\n\n\nIn developed a model to predict snow cover duration in Estonia using a linear prediction model and spatial interpolation.\n\n\n\n\n\n\nJan 1, 2024\n\n\n\n\n\n\n  \n\n\n\n\nCreating an Interactive Webmap of Data on Break-Ins and Population Density for Berlin\n\n\n\n\n\n\n\nanalysis\n\n\ncode\n\n\ndata wrangling\n\n\nR\n\n\ndata visualization\n\n\nPython\n\n\nweb map\n\n\n\n\nIn this project I worked with the Criminal Statistics data set of Berlin in 2022 as well as a data set on population density. The end result is an interactive webmap giving an overview of break-ins in Berlin and it’s relationship with population density.\n\n\n\n\n\n\nJan 1, 2024\n\n\n\n\n\n\n  \n\n\n\n\nAnalysing Crop Erodibility in Berlin-Brandenburg\n\n\n\n\n\n\n\nanalysis\n\n\nQGIS\n\n\nmapping\n\n\n\n\nI processed environmental data sets to assess the erodibility of cropland in Berlin-Brandenburg\n\n\n\n\n\n\nJan 1, 2024\n\n\n\n\n\n\n  \n\n\n\n\nFlows between territorial communities in Estonia\n\n\n\n\n\n\n\nQGIS\n\n\nmapping\n\n\nflow mapping\n\n\nmap design\n\n\n\n\nIn this project movements between territorial communities in Estonia were mapped\n\n\n\n\n\n\nJan 1, 2024\n\n\n\n\n\n\nNo matching items"
+  }
+]

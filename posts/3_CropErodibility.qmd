@@ -1,0 +1,20 @@
+---
+title: "Analysing Crop Erodibility in Berlin-Brandenburg"
+description: "I processed environmental data sets to assess the erodibility of cropland in Berlin-Brandenburg"
+date: "2024-01"
+publishDate: "2024-01"
+categories:
+  - analysis
+  - QGIS
+  - mapping
+---
+
+For this project I analyzed environmental data on elevation, soil and land cover to identify area where croplands are susceptible to soil erosion in Berlin-Brandenburg. The project was conducted in QGIS.
+
+The analysis included calculating slope from a a digital elevation model (DEM). From this slopes layer, slopes higher than 2 degrees were extracted to a new data layer. A soil data set from the Harmonized World Soil Database was subset to only include the most erodible soil texture classes (silt, silt loam, loam, sandy loam, loamy sand and silty clay loam).
+
+Thereby I obtained two data layers with binary values, with 1 representing the presence of the informational category. I then employed suitability analysis and created three Raster Calculator expressions. The first selected specific agricultural land cover types from the ESA Land Cover 300m product and determined if the grid cells overlapped with steep slopes (\>2 degrees). The ones that did not overlap were attributed as *cropland non-susceptible to erosion*.
+
+In another expression, the agricultural land cover types that overlap with erodible soil were identified and labelled as *croplands on erodible soil*. With the last raster expression the cells in which *cropland is on steep slopes as well as on erodible soil* were identified. This resulted in obtaining three informational categories on erosion susceptibility. The results are shown in Figure 1.
+
+![Fig. 1: Erodability of Cropland in Berlin-Brandenburg](images/Map_ErodabilityAnalysis.png)

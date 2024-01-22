@@ -1,0 +1,21 @@
+---
+title: "Flows between territorial communities in Estonia"
+description: "In this project movements between territorial communities in Estonia were mapped "
+date: "2024-01"
+publishDate: "2024-01"
+categories:
+  - QGIS
+  - mapping
+  - flow mapping
+  - map design
+---
+
+For this project a data set with the origin and destination of movements between territorial communities in January 2018 in Estonia was mapped.
+
+The data set was loaded into QGIS in the Estonian Coordinate System (EPSG: 3301). An additional plugin called "Shape Tools" was installed. This tool allows for the creation of lines based on starting and ending point coordinates. The corresponding fields from the data set were selected and a new data layer with line polygons processed. After assigning the integer field type to the number of regular movers variable, the symbology of the lines was changed and size-graduated based on the number. Lines with a very small number of movers (\<5) were subsequently filtered out, significantly reducing the data layer.
+
+A dark map layout was chosen for visualization purposes and the lines styled accordingly. In the layer rendering specification the blending mode was changed to "Screen", which is very suitable for dark themed maps. The line symbology was adapted through the geometry generator and an expression used to create a curving of the lines.
+
+A place name layer was added to the project and the larger cities labelled. A map (Figure 1) was then created that allow us to see pattern in movements between territorial communities
+
+![Fig. 1: Flowmap of movement between territorial communities of Estonia in January 2018](images/flowmap.png)

@@ -1,0 +1,55 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "GIS Portfolio"
+  site-url: ""
+  favicon: ""
+  twitter-card: true
+  open-graph: true
+  cookie-consent:
+    type: express
+    style: interstitial
+    palette: light
+  navbar:
+    left:
+      - icon: house-door-fill
+        href: index.qmd
+        text: Home
+      - icon: person-lines-fill
+        href: about.qmd
+        text: About
+        aria-label: About
+      - icon: file-bar-graph-fill
+        href: projects.qmd
+        text: Projects
+        aria-label: Projects
+      - icon: chat-square-fill
+        href: contact.qmd
+        text: Contact Me
+        aria-label: Contact
+      - icon: github
+        href: "https:"
+        aria-label: GitHub
+      - icon: linkedin
+        href: "https:"
+        aria-label: LinkedIn
+    logo: ""
+    background: "#0454a4"
+    pinned: true
+    collapse: true
+  page-footer:
+    center: 
+      - text: "Website created by Philip M. Knirsch."
+
+format:
+  html:
+    theme: flatly
+    css: styles.css
+    toc: true
+    code-fold: true
+    code-summary: "Look at the code"
+
+editor: visual
+

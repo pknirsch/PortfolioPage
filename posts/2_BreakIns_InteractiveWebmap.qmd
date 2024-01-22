@@ -1,0 +1,36 @@
+---
+title: "Creating an Interactive Webmap of Data on Break-Ins and Population Density for Berlin"
+description: "In this project I worked with the Criminal Statistics data set of Berlin in 2022 as well as a data set on population density. The end result is an interactive webmap giving an overview of break-ins in Berlin and it's relationship with population density."
+date: "2024-01"
+publishDate: "24-01"
+categories:
+  - analysis
+  - code
+  - data wrangling
+  - R
+  - data visualization
+  - Python
+  - web map
+---
+
+In this project I worked with the criminal statistics data set of Berlin in 2022 as well as with data on population density. The end result is a static map of break-in patterns and an interactive web map giving an overview of break-ins in Berlin and it's relation with population density.
+
+The employed data sets are:
+
+1.  Berliner Polizeiliche Kriminalstatistik 2022 (Berlin Crime Statistic 2022)
+2.  Berliner Bezirksregionen 2022 (District Regions of 2022)
+3.  Umweltatlas - Einwohnerdichte 2022 (Population Density 2022)
+
+The challenge in this analysis lied in referencing the crime data set and the data on population density to a same reference area. The published crime statistic of 2022 was published on the level of district regions of Berlin. Data on population density however was not available for the same reference units. Only data that was on a higher aggregation level or on a lower aggregation level could therefore be utilized. I chose to work with a data set at the block or sub-block level, which also contained total population numbers per unit, and to aggregate it to the district regions.
+
+I started by calculating the area of each housing or sub-block unit. Since some housing blocks extended over two or more district regions I needed to perform a spatial intersection between the population density polygons and the district region polygons. The result was a new data frame that, in case of intersection with more than one district region, split the housing blocks into different parts. By calculating the area of the split housing blocks and dividing it by the area of the initial housing blocks I could derive at the proportion of area that was contained in each district. Since the data on population density also contained total population numbers per block unit I could multiply the population by the areal proportion of the housing block in each district region. I then aggregated the population numbers for each district region, divided that by the total area and thereby derived at the population density of each district region.
+
+Now I could perform a join between the population density data and the crime data set. I normalised the total break-ins per district regions by the total population and calculated the break-in incidence per 10 000 inhabitants. For further visualization purposes I also calculated the centroids of each district region and assigned the geometry feature to the break-in data.
+
+Then I conducted a correlation analysis to examine the relationship between population density and the incidence of break-ins. I constructed a linear regression model and evaluated the model's coefficients to understand the nature of the relationships and it's statistical significance.
+
+Further steps included curating the data sets for visualization as a static map in R using the tmap package. I then exported the data and imported it into a python environment where I created an [interactive leaflet web map](InteractiveWebmap.qmd).
+
+![Fig. 1: Map on Break-ins in Berlin in 2022 and it's relation with population density (created with tmap)](images/BreakInsBerlin_Composed_PP.png)
+
+[Link to Interactive Webmap](InteractiveWebmap.qmd)
