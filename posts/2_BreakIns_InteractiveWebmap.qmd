@@ -11,6 +11,7 @@ categories:
   - data visualization
   - Python
   - web map
+  - population
 ---
 
 In this project I worked with the criminal statistics data set of Berlin in 2022 as well as with data on population density. The end result is a static map of break-in patterns and an interactive web map giving an overview of break-ins in Berlin and it's relation with population density.
